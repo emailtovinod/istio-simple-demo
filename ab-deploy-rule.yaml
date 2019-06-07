@@ -1,0 +1,13 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: ab-deploy
+spec:
+  host: simpleab.istio-ab.svc.cluster.local
+  subsets:
+  - name: blue
+    labels:
+      version: v1
+  - name: green
+    labels:
+      version: v2

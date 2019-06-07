@@ -1,0 +1,17 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: simpleab-vs-from-gw
+spec:
+  hosts:
+  - "simpleab.istio-ab.svc.cluster.local"
+  gateways:
+  - simpleab-gateway
+  http:
+  - route:
+    - destination:
+        host: simpleab.istio-ab.svc.cluster.local
+        port:
+          number: 8080
+        subset: green
+

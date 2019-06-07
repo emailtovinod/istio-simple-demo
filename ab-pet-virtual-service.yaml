@@ -1,0 +1,19 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: pet-vs-from-gw
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - pet-gateway
+  http:
+  - match:
+    - uri:
+        exact: /item.php
+    route:
+    - destination:
+        host: ab-pet.ab-pet-stio.svc.cluster.local
+        port:
+          number: 8080
+

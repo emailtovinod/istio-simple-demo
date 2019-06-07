@@ -1,0 +1,13 @@
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: ab-pet-deploy
+spec:
+  host: ab-pet.ab-pet-stio.svc.cluster.local
+  subsets:
+  - name: blue
+    labels:
+      name: blue
+  - name: green
+    labels:
+      name: green
